@@ -6,28 +6,22 @@ export const revalidate = 0
 
 export default async function InventoryPage() { 
   return (
-    <main className="min-h-screen bg-white">
-      <div className="max-w-5xl mx-auto py-12">
-        <header className="mb-16 border-b border-zinc-100 pb-10">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-2 h-8 bg-zinc-900 rounded-full" />
-            <h1 className="text-4xl font-bold text-zinc-900 tracking-tighter uppercase">
-              Inventory <span className="text-zinc-300 font-light">Control</span>
-            </h1>
-          </div>
-          <p className="text-zinc-500 font-medium ml-5">Sincronización de activos médicos y trazabilidad de lotes.</p>
-        </header>
-        
-        <div className="space-y-20">
+    // Quitamos min-h-screen y bg-white porque ya vienen del layout principal
+    <div className="w-full">
+      <div className="max-w-5xl mx-auto py-6 md:py-12 px-4 md:px-0">
+        <div className="space-y-12 md:space-y-20">
           <section>
             <InvoiceScanner />
           </section>
           
-          <section className="pt-10">
+          {/* Separador visual sutil solo en desktop */}
+          <div className="hidden md:block h-px bg-zinc-100 w-full" />
+
+          <section>
             <InventoryList />
           </section>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

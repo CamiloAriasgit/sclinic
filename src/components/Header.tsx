@@ -22,7 +22,7 @@ export default function Header({ userInitial, userEmail, clinic }: HeaderProps) 
                         {/* Botón Menú: Visible solo en móvil */}
                         <button 
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="lg:hidden p-2 hover:bg-zinc-50 rounded-lg text-zinc-600 transition-colors border border-zinc-100 shadow-sm"
+                            className="lg:hidden p-2 hover:bg-zinc-50 rounded-lg text-zinc-600 transition-colors border border-zinc-200"
                         >
                             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
                         </button>

@@ -28,11 +28,11 @@ export default function DashboardPage() {
     })
   }, [])
 
-  if (loading) return <div className="p-10 text-zinc-400 animate-pulse text-sm">Sincronizando activos...</div>
+  if (loading) return <div className="p-6 text-zinc-400 animate-pulse text-sm">Sincronizando activos...</div>
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 font-sans antialiased">
-      <div className="max-w-7xl mx-auto space-y-6 md:space-y-10">
+      <div className="mx-auto space-y-6 md:space-y-10">
         
         {/* Grid de Métricas Principales: Forzamos 3 columnas siempre */}
         <div className="grid grid-cols-3 gap-2 md:gap-6">
