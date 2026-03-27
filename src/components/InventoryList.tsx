@@ -66,7 +66,7 @@ export default function InventoryList() {
         {inventoryArray.map((group: any) => {
           const isExpanded = expandedInsumo === group.nombre;
           return (
-            <div key={group.nombre} className={`group bg-white border rounded-xl transition-all duration-200 ${isExpanded ? 'border-zinc-900 shadow-md' : 'border-zinc-200'}`}>
+            <div key={group.nombre} className={`group bg-white border rounded-lg transition-all duration-200 ${isExpanded ? 'border-zinc-900 shadow-md' : 'border-zinc-200'}`}>
               <button 
                 onClick={() => setExpandedInsumo(isExpanded ? null : group.nombre)}
                 className="w-full p-4 flex items-center gap-4 text-left"

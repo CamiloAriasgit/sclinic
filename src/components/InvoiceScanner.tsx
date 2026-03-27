@@ -54,7 +54,7 @@ export default function InvoiceScanner() {
   return (
     <div className="w-full space-y-6">
       <div className={`
-        relative border-2 border-dashed rounded-2xl p-8 transition-all
+        relative border-2 border-dashed rounded-lg p-8 transition-all
         flex flex-col items-center justify-center text-center
         ${loading ? 'bg-zinc-100 border-zinc-300' : 'bg-white border-zinc-200 hover:border-zinc-400'}
       `}>
