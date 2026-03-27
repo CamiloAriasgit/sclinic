@@ -51,7 +51,7 @@ export default function Sidebar({ clinic, isMobileOpen, closeMobileMenu }: Sideb
                         <h1 className="text-sm font-bold tracking-tight text-zinc-900 truncate">
                             {clinic?.nombre || 'SCAB Clinic'}
                         </h1>
-                        <span className="bg-gradient-to-r px-1 from-indigo-500 via-violet-500 to-purple-500 bg-clip-text text-transparent border border-indigo-300 rounded-full text-[7px] font-extrabold uppercase">
+                        <span className="bg-gradient-to-b px-1 from-cyan-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent border border-indigo-300 rounded-full text-[7px] font-extrabold uppercase">
                             SCAB CLINIC
                         </span>
                     </div>

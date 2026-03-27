@@ -52,73 +52,54 @@ export default function InvoiceScanner() {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-8">
-      {/* Zona de Carga Refinada */}
+    <div className="w-full space-y-6">
       <div className={`
-        relative border-2 border-dashed rounded-2xl p-12 transition-all duration-300
+        relative border-2 border-dashed rounded-2xl p-8 transition-all
         flex flex-col items-center justify-center text-center
-        ${loading ? 'bg-zinc-50 border-zinc-200' : 'bg-white border-zinc-200 hover:border-zinc-900'}
+        ${loading ? 'bg-zinc-100 border-zinc-300' : 'bg-white border-zinc-200 hover:border-zinc-400'}
       `}>
-        <div className={`
-          w-12 h-12 rounded-full flex items-center justify-center mb-4 transition-all
-          ${loading ? 'bg-zinc-100' : 'bg-zinc-900 text-white'}
-        `}>
+        <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${loading ? 'bg-white' : 'bg-zinc-900 text-white'}`}>
           {loading ? <Loader2 size={20} className="animate-spin text-zinc-900" /> : <Upload size={20} />}
         </div>
-
         <div className="space-y-1">
-          <h3 className="text-sm font-semibold text-zinc-900">
-            {loading ? "Analizando Factura con IA..." : "Cargar Factura de Compra"}
-          </h3>
-          <p className="text-xs text-zinc-500">Sube una imagen para extraer lotes automáticamente</p>
+          <p className="text-sm font-bold text-zinc-900">{loading ? "Procesando..." : "Subir factura"}</p>
+          <p className="text-[10px] text-zinc-500 uppercase tracking-widest">JPG, PNG o PDF</p>
         </div>
-
-        <input
-          type="file"
-          className="absolute inset-0 opacity-0 cursor-pointer disabled:cursor-not-allowed"
-          onChange={handleUpload}
-          disabled={loading}
-          accept="image/*"
-        />
+        <input type="file" className="absolute inset-0 opacity-0 cursor-pointer disabled:hidden" onChange={handleUpload} disabled={loading} accept="image/*" />
       </div>
 
-      {/* Resultados de Extracción */}
       {results && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
-          <div className="flex justify-between items-center px-2">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 flex items-center gap-2">
-              <FileText size={12} /> Items Detectados
-            </h4>
-            <button onClick={() => setResults(null)} className="text-[10px] font-bold text-zinc-400 hover:text-zinc-900 flex items-center gap-1">
-              <X size={12} /> DESCARTAR
-            </button>
+        <div className="space-y-4 animate-in fade-in slide-in-from-top-2">
+          <div className="flex justify-between items-end px-1">
+            <h3 className="text-[10px] font-black uppercase tracking-widest text-zinc-400">Previsualización</h3>
+            <button onClick={() => setResults(null)} className="text-[10px] font-bold text-red-500 hover:underline">CANCELAR</button>
           </div>
 
-          <div className="bg-white border border-zinc-200 rounded-xl overflow-hidden divide-y divide-zinc-100">
+          <div className="bg-white border border-zinc-200 rounded-xl divide-y divide-zinc-100 overflow-hidden shadow-sm">
             {results.map((item, index) => (
-              <div key={index} className="p-5 flex justify-between items-center bg-white">
-                <div className="space-y-1.5">
-                  <p className="font-semibold text-sm text-zinc-900">{item.producto_nombre}</p>
-                  <div className="flex gap-3">
-                    <span className="text-[10px] font-mono text-zinc-500 bg-zinc-100 px-1.5 py-0.5 rounded">LOTE: {item.lote_numero}</span>
-                    <span className="text-[10px] font-bold text-red-600">VENCE: {item.fecha_vencimiento}</span>
+              <div key={index} className="p-4 grid grid-cols-12 gap-3 items-center">
+                <div className="col-span-8 min-w-0">
+                  <p className="font-bold text-sm text-zinc-900 truncate">{item.producto_nombre}</p>
+                  <div className="flex gap-2 mt-1">
+                    <span className="text-[9px] font-mono bg-zinc-100 px-1.5 py-0.5 rounded text-zinc-600">L:{item.lote_numero}</span>
+                    <span className="text-[9px] font-bold bg-red-50 text-red-600 px-1.5 py-0.5 rounded">V:{item.fecha_vencimiento}</span>
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-lg font-bold text-zinc-900">{item.cantidad} <span className="text-[10px] text-zinc-400">UDS</span></p>
-                  <p className="text-[10px] font-semibold text-zinc-500">${Number(item.precio_compra).toLocaleString()}</p>
+                <div className="col-span-4 text-right">
+                  <p className="text-sm font-black text-zinc-900">{item.cantidad} U</p>
+                  <p className="text-[10px] text-zinc-400 font-medium">${Number(item.precio_compra).toLocaleString()}</p>
                 </div>
               </div>
             ))}
           </div>
 
           <button
-            className="w-full bg-zinc-900 text-white py-4 rounded-lg text-sm font-semibold hover:bg-zinc-800 transition-all flex items-center justify-center gap-2"
+            className="w-full bg-zinc-900 text-white h-14 rounded-xl text-sm font-bold hover:bg-zinc-800 transition-transform active:scale-[0.98] shadow-xl shadow-zinc-200 flex items-center justify-center gap-2"
             onClick={handleConfirm}
             disabled={loading}
           >
-            {loading ? <Loader2 size={16} className="animate-spin" /> : <Check size={16} />}
-            {loading ? "Sincronizando..." : "Confirmar Ingreso a Inventario"}
+            {loading ? <Loader2 size={18} className="animate-spin" /> : <Check size={18} />}
+            Confirmar e Ingresar Stock
           </button>
         </div>
       )}

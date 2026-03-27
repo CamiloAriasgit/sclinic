@@ -6,22 +6,25 @@ export const revalidate = 0
 
 export default async function InventoryPage() { 
   return (
-    // Quitamos min-h-screen y bg-white porque ya vienen del layout principal
-    <div className="w-full">
-      <div className="max-w-5xl mx-auto py-6 md:py-12 px-4 md:px-0">
-        <div className="space-y-12 md:space-y-20">
-          <section>
+    <main className="min-h-screen bg-zinc-50/50"> {/* Un fondo sutil para contrastar con tarjetas blancas */}
+      <div className="max-w-4xl mx-auto px-4 py-8 md:py-16">
+        <div className="grid grid-cols-1 gap-10 md:gap-16">
+          
+          <section aria-label="Escaneo de facturas">
             <InvoiceScanner />
           </section>
           
-          {/* Separador visual sutil solo en desktop */}
-          <div className="hidden md:block h-px bg-zinc-100 w-full" />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+              <div className="w-full border-t border-zinc-200"></div>
+            </div>
+          </div>
 
-          <section>
+          <section aria-label="Lista de inventario">
             <InventoryList />
           </section>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
