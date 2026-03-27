@@ -57,7 +57,7 @@ export default function InventoryList() {
           <h2 className="text-2xl font-black text-zinc-900 tracking-tight">Inventario</h2>
           <p className="text-xs text-zinc-500">Stock total por producto y lote.</p>
         </div>
-        <div className="h-10 w-10 bg-white border border-zinc-200 rounded-lg flex items-center justify-center shadow-sm">
+        <div className="h-10 w-10 bg-white border border-zinc-200 rounded-lg flex items-center justify-center">
            <span className="text-xs font-bold text-zinc-900">{inventoryArray.length}</span>
         </div>
       </header>
@@ -90,7 +90,7 @@ export default function InventoryList() {
               <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-[500px] border-t border-zinc-100' : 'max-h-0'}`}>
                 <div className="p-2 bg-zinc-50/50 space-y-1">
                   {group.lotes.map((lote: any) => (
-                    <div key={lote.id} className="bg-white border border-zinc-100 p-3 rounded-lg flex flex-wrap items-center justify-between gap-2 shadow-sm">
+                    <div key={lote.id} className="bg-white border border-zinc-200 p-3 rounded-lg flex flex-wrap items-center justify-between gap-2">
                       <div className="flex items-center gap-3">
                         <div className="flex items-center gap-1.5 bg-zinc-100 px-2 py-1 rounded">
                           <Barcode size={12} className="text-zinc-500" />
