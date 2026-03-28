@@ -39,7 +39,7 @@ export default function AuditPage() {
       </header>
 
       {/* Vista de Escritorio (Tabla) */}
-      <div className="hidden md:block bg-white border border-zinc-200 rounded-xl overflow-hidden">
+      <div className="hidden md:block bg-white border border-zinc-200 rounded-lg overflow-hidden">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-zinc-50/50 border-b border-zinc-100">
@@ -83,10 +83,10 @@ export default function AuditPage() {
       {/* Vista Móvil (Cards) */}
       <div className="grid grid-cols-1 gap-4 md:hidden">
         {logs.map((log) => (
-          <div key={log.id} className="bg-white border border-zinc-200 rounded-xl p-5 space-y-4">
+          <div key={log.id} className="bg-white border border-zinc-200 rounded-lg p-5 space-y-4">
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-2">
-                <div className="p-2 bg-zinc-50 rounded-lg text-zinc-400">
+                <div className="p-2 bg-zinc-100 rounded-lg text-zinc-400">
                   <Clock size={14} />
                 </div>
                 <div>
