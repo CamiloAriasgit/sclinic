@@ -35,7 +35,7 @@ export default function ProtocolsPage() {
       {/* Header Minimalista */}
       <header className="flex flex-row justify-between items-center mb-5">
         <div className="flex items-center gap-2.5">
-          <h1 className="text-xl md:text-2xl font-black tracking-tighter text-zinc-900 uppercase">Protocolos</h1>
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-zinc-900 uppercase">Protocolos</h1>
         </div>
         
         <button 
